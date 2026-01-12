@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SadJerry Store | Ссылки</title>
+    <title>SadJerry Store | Выкуп из Китая</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0f0f0f;
-            --card-bg: #1a1a1a;
+            --card-bg: rgba(26, 26, 26, 0.8);
             --text-color: #ffffff;
-            --accent-color: #3d3d3d;
-            --hover-color: #ffffff;
-            --hover-text: #000000;
+            --accent-color: #ff4d4d;
+            --secondary-text: #888;
         }
 
         * {
@@ -32,73 +31,180 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Анимация фона без задержек */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.15;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); }
+            100% { transform: translateY(-20vh) rotate(360deg); }
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
+            background: rgba(20, 20, 20, 0.6);
+            padding: 40px 25px;
+            border-radius: 35px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
+        /* Мышь в цвет композиции */
         .profile-img {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(45deg, #333, #777);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #441a1a 0%, #111 100%);
             border-radius: 50%;
             margin: 0 auto 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 50px;
             border: 2px solid var(--accent-color);
+            filter: drop-shadow(0 0 15px rgba(255, 77, 77, 0.4));
+        }
+
+        /* Заголовок с вертикальной чертой */
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 600;
-            margin-bottom: 30px;
             letter-spacing: -0.5px;
+        }
+
+        .divider {
+            width: 2px;
+            height: 24px;
+            background-color: var(--accent-color);
+            display: inline-block;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 13px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Блок платформ */
+        .platforms-box {
+            background: rgba(255, 77, 77, 0.05);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+        }
+
+        .platforms-title {
+            font-size: 11px;
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .platforms-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .platforms-list span {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
         }
 
         .links-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .link-card {
             background-color: var(--card-bg);
             color: var(--text-color);
             text-decoration: none;
-            padding: 18px;
-            border-radius: 15px;
+            padding: 16px;
+            border-radius: 16px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .link-card:hover {
-            background-color: var(--hover-color);
-            color: var(--hover-text);
+            background-color: #fff;
+            color: #000;
             transform: translateY(-2px);
         }
 
         .footer {
-            margin-top: 40px;
-            font-size: 12px;
+            margin-top: 35px;
+            font-size: 11px;
             color: #666;
+            line-height: 1.6;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-animation" id="bg"></div>
+
     <div class="container">
         <div class="profile-img">🐭</div>
         
-        <h1>SadJerry Store</h1>
+        <div class="title-container">
+            <h1>Sad Jerry</h1>
+            <div class="divider"></div>
+            <h1>Store</h1>
+        </div>
+        <p class="subtitle">Direct from China</p>
+
+        <div class="platforms-box">
+            <span class="platforms-title">Доступен выкуп:</span>
+            <div class="platforms-list">
+                <span>Taobao</span> <span>Pinduoduo</span> <span>1688</span> 
+                <span>Goofish</span> <span>Poizon</span> <span>95</span> <span>Weidian</span>
+            </div>
+        </div>
 
         <div class="links-wrapper">
             <a href="https://t.me/sadjerrystore/207" class="link-card" target="_blank">
@@ -106,7 +212,7 @@
             </a>
 
             <a href="https://t.me/sadjerry" class="link-card" target="_blank">
-                👨‍💻 Написать менеджеру
+                👨‍💻 Менеджер
             </a>
 
             <a href="https://t.me/+WorPmpdQYLkyMmVi" class="link-card" target="_blank">
@@ -115,9 +221,32 @@
         </div>
 
         <div class="footer">
-            © 2026 SadJerry Store
+            © 2026 SadJerry Store<br>Выкуп с любых китайских платформ
         </div>
     </div>
 
+    <script>
+        const icons = ['🇨🇳', '📦', '🎁', '✈️'];
+        const bg = document.getElementById('bg');
+        const count = 15;
+
+        for (let i = 0; i < count; i++) {
+            const icon = document.createElement('div');
+            icon.className = 'floating-icon';
+            icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+            
+            icon.style.left = Math.random() * 100 + 'vw';
+            
+            // Отрицательный delay запускает анимацию мгновенно с разных фаз
+            const duration = 15 + Math.random() * 10;
+            const delay = Math.random() * -20; 
+            
+            icon.style.animationDuration = duration + 's';
+            icon.style.animationDelay = delay + 's';
+            icon.style.fontSize = (Math.random() * 15 + 20) + 'px';
+            
+            bg.appendChild(icon);
+        }
+    </script>
 </body>
 </html>
